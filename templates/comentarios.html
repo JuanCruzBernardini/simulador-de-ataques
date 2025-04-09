@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comentarios (XSS)</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Comentarios públicos (XSS)</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Tu nombre" required>
+            <textarea name="content" rows="3" placeholder="Escribe algo..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div class="modo-switch">
+            Ver modo:
+            {% if modo == 'seguro' %}
+                <a href="{{ url_for('comentarios', modo='vulnerable') }}">Vulnerable</a> |
+                <strong>Seguro</strong>
+            {% else %}
+                <strong>Vulnerable</strong> |
+                <a href="{{ url_for('comentarios', modo='seguro') }}">Seguro</a>
+            {% endif %}
+        </div>
+
+        <h4>Comentarios:</h4>
+        <ul>
+            {% for user, content in comentarios %}
+                <li><strong>{{ user }}</strong>: 
+                    {% if modo == 'seguro' %}
+                        {{ content }}
+                    {% else %}
+                        {{ content|safe }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <p><a href="/dashboard">Volver al panel</a></p>
+    </div>
+</body>
+</html>

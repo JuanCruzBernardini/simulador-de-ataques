@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .dashboard {
+            max-width: 500px;
+            margin: 80px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .dashboard h2 {
+            margin-bottom: 20px;
+        }
+
+        .dashboard a {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 18px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .dashboard a:hover {
+            background-color: #0056b3;
+        }
+
+        .logout {
+            background-color: #dc3545;
+        }
+
+        .logout:hover {
+            background-color: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h2>Bienvenido, {{ username }} 👋</h2>
+
+        <a href="/buscar">🔍 SQLi - Buscar Usuario</a><br>
+        <a href="/comentarios">💬 XSS - Comentarios</a><br>
+        <a href="/configurar">🛡️ CSRF - Cambiar Contraseña</a><br>
+        <a href="/" class="logout">🚪 Cerrar sesión</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+---
+
+## 📄 `.gitignore` – para evitar archivos innecesarios
+
+```gitignore
+# Entornos virtuales
+venv/
+ENV/
+.env/
+
+# Archivos de sistema
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Base de datos generada
+database.db
+
+# Archivos temporales o backup
+*.log
+*.swp
+.DS_Store
+Thumbs.db
